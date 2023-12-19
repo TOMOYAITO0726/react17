@@ -1,29 +1,26 @@
-import { memo } from "react";//親コンポーネントがレンダリングされてもコンポーネントはレンダリングされなくなる
+import { memo } from "react";
 
 const style = {
-    width: "100px",
+    width:"150px",
     height: "200px",
     backgroundColor: "khaki"
-};
+}
 
 export const ChildArea = memo((props) => {
-    const {open, onClickClose } = props;
-    console.log("ChildAreaがレンダリングされた!!");
+    const { open, onClickClose } = props;
+    console.log("ChildAreaがレンダリングされた!!");//これがコンソールに表示されたらChilrenAreがレンダリングされたということ
     const data = [...Array(2000).keys()];
-    data.forEach(() => {
+    data.forEach(()=>{
         console.log("...");
     });
-    console.log(data);
     return (
         <>
-        {open ? (
-            <div style={style}>
-            <p>子コンポーネント</p>
-            <button onClick={onClickClose}>閉じる</button>
-        </div>
+            {open ? (
+               <div style={style}>
+               <p>子コンポーネント</p>
+               <button onClick={onClickClose}>閉じる</button>
+           </div> 
             ) : null}
-        
         </>
-        
     );
 });
